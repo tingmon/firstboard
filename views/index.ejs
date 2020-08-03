@@ -1,0 +1,59 @@
+<%- include('./layouts/header'); -%>
+    <main>
+        <%- include('./layouts/nav'); -%>
+        <aside class="aside30">
+            <form id="loginForm" name="loginForm" method="POST" action="">
+                <label>ID</label>
+                <input type="text" id="id" name="id" value="admin"><br>
+                <label>Password</label>
+                <input type="password" id="password" name="password" value="132435!Qqq"><br>
+                <input type="submit" value="Submit">
+                <button><a href="/join">Join</a></button>
+            </form>
+            <p id="serverMessage">
+                <%
+                if(typeof message !== 'undefined')
+                    {
+                        %>
+                            <%= message %>
+                        <%
+                    }
+                %>
+            </p>
+        </aside>
+        <section class="section70">
+            <button><a href="/write">Write</a></button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    if(typeof(posts) !== 'undefined'){
+                        for(var post of posts){
+                            %>
+                            <tr>
+                                <td><%= post.postId %></td>
+                                <td><a href="/note/<%= post._id %>"><%= post.title %></a></td>
+                                <td><%= post.author %></td>
+                                <td><%= post.date %></td>
+                                <td><a href="#">delete</a></td>
+                                <td><a href="/write/<%= post._id %>">revise</a></td>
+                            </tr>
+                            <%
+                        }
+                    }
+                    %>   
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <%- include('./layouts/footer'); -%>
+
+</body>
+</html>

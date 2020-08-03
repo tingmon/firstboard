@@ -1,0 +1,63 @@
+<%- include('./layouts/header'); -%>
+    <main>
+        <%- include('./layouts/nav'); -%>
+        <aside class="aside30">
+            <p id="serverMessage">
+                <%
+                if(typeof message !== 'undefined')
+                    {
+                        %>
+                            <%= message %>
+                        <%
+                    }
+                %>
+            </p>
+            <h3>Express your opinion!</h3>
+            <div id="errorMessages">
+                <%
+                if(typeof(postErrors) !== 'undefined'){
+                    for(var error of postErrors){
+                        %>
+                        <p class="error"><%= error.msg %></p>
+                        <%
+                    }
+                }
+                %>
+            </div>
+        </aside>
+        <section class="section70">
+            <form id="writeForm" method="POST" action="">
+                <%
+                if(typeof(post) == 'undefined'){
+                    %>
+                    <label>Title</label><br>
+                    <textarea name="title" id="title" cols="100" row="50"></textarea><br>
+                    <label>Content</label><br>
+                    <textarea name="content" id="content" cols="100" row="50"></textarea><br>
+                    <label>Post Password</label>
+                    <input type="password" id="postPassword" name="postPassword" placeholder="4-digit number">
+                    <input type="submit" value="Upload">
+                    <%
+                }
+                %>
+                <%
+                if(typeof(post) !== 'undefined'){
+                    %>
+                    <label>Title</label><br>
+                    <textarea name="title" id="title" cols="100" row="50"><%= post.title %></textarea><br>
+                    <label>Content</label><br>
+                    <textarea name="content" id="content" cols="100" row="50"><%= post.content %></textarea><br>
+                    <label>Post Password</label>
+                    <input type="password" id="postPassword" name="postPassword" placeholder="4-digit number" value="<%= post.postPassword %>">
+                    <input type="submit" value="Upload">
+                    <%
+                }
+                %>
+
+            </form>
+        </section>
+    </main>
+    <%- include('./layouts/footer'); -%>
+
+</body>
+</html>

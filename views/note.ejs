@@ -1,0 +1,41 @@
+<%- include('./layouts/header'); -%>
+    <main>
+        <%- include('./layouts/nav'); -%>
+        <aside class="aside30">
+            <form id="loginForm" name="loginForm" method="POST" action="">
+                <label>ID</label>
+                <input type="text" id="id" name="id"><br>
+                <label>Password</label>
+                <input type="password" id="password" name="password"><br>
+                <input type="submit" value="Submit">
+                <a href="/join">Join</a>
+            </form>
+            <p id="serverMessage">
+                <%
+                if(typeof message !== 'undefined')
+                    {
+                        %>
+                            <%= message %>
+                        <%
+                    }
+                %>
+            </p>
+        </aside>
+        <section class="section70">
+            <div class="container">
+                <div class="header">
+                    <p><%= post.postId %></p>
+                    <h2><%= post.title %></h2>
+                    <h4><%= post.author %></h4>
+                    <p><%= post.date %></p>
+                </div>
+                <div class="content">
+                    <p><%= post.content %></p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <%- include('./layouts/footer'); -%>
+
+</body>
+</html>

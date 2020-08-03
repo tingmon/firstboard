@@ -1,0 +1,39 @@
+<%- include('./layouts/header'); -%>
+    <main>
+        <%- include('./layouts/nav'); -%>
+        <aside class="aside30">
+            <h3>Join our movement! It's free!</h3>
+            <p>password have to has more than 10 letters</p>
+            <p>password requires lowercase, uppercase, number and special character</p>
+            <div id="errorMessages">
+                <%
+                if(typeof(joinErrors) !== 'undefined'){
+                    for(var error of joinErrors){
+                        %>
+                        <p class="error"><%= error.msg %></p>
+                        <%
+                    }
+                }
+                %>
+            </div>
+        </aside>
+        <section class="section70">
+            <form id="joinForm" name="joinForm" method="POST" action="">
+                <label>ID</label>
+                <input type="text" id="id" name="id"><br>
+                <label>Password</label>
+                <input type="password" id="password" name="password"><br>
+                <label>Password Confirm</label>
+                <input type="password" id="passwordConfirm" name="passwordConfirm"><br>
+                <label>Email</label>
+                <input type="email" id="text" name="email"><br>
+                <label>Phone Number</label>
+                <input type="text" id="phone" name="phone"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
+    <%- include('./layouts/footer'); -%>
+
+</body>
+</html>
